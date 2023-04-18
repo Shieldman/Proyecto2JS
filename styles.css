@@ -1,0 +1,249 @@
+:root {
+    --title-size: 15px;
+    --subtitle-size: 14px;
+    --inside-text-size: 13px;
+    --detail-text-size: 10px;
+    --borders-color: rgb(214, 214, 214);
+  }
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  header {
+    overflow: hidden;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  
+.menu-icon {
+    width: 24px;
+    height: 24px;
+    margin: 10px 10px;
+  }
+  
+  #filter-icon-main {
+    display: none;
+  }
+  
+  #main-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 25px 16px 25px;
+  }
+  #menu-points {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+  
+  #menu-points > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #menu-points > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+  }
+  
+  #home-logo {
+    width: 150px;
+    padding: 0 15px 0 0;
+  }
+  
+  #search-bar {
+    width: 35%;
+    display: flex;
+    border: 0.5px solid #ddd;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+  }
+  
+  #search-bar-mobile {
+    display: none;
+  }
+  
+  #search-bar > input {
+    border: none;
+    margin-left: 10px;
+    font-size: large;
+    width: 100%;
+  }
+
+  #filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.5px solid var(--borders-color);
+    border-bottom: 0.5px solid var(--borders-color);
+    padding: 0 25px 0 25px;
+    height: 40px;
+  }
+  
+  #filter-bar > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+  }
+  #filter-bar > a > h4 {
+    color: black;
+    font-size: var(--title-size);
+  }
+  
+  #filter-bar > span {
+    font-size: var(--title-size);
+  }
+
+  #filter-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+  }
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    #menu-points > li {
+      font-size: 0;
+    }
+    #menu-points > li:first-child {
+      display: none;
+    }
+  
+    #search-bar-mobile {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    #search-bar-mobile-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0.5px solid var(--borders-color);
+      border-radius: 5px;
+      margin: 15px 15px 0 15px;
+    }
+  
+    #search-bar-mobile > div > input {
+      border: none;
+      margin-left: 10px;
+      font-size: large;
+      width: 90%;
+    }
+  
+    #home-logo {
+      width: 80px;
+      padding: 0 15px 0 10px;
+    }
+  
+    #filter-icon-main {
+      display: block;
+    }
+  
+    #search-bar {
+      display: none;
+    }
+  
+    #filter-bar {
+      display: none;
+    }
+  
+    #main-menu {
+      border-bottom: 0.5px solid var(--borders-color);
+    }
+  
+    #main-menu > a {
+      display: flex;
+    }
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    #menu-points > li {
+      font-size: 0;
+    }
+    #menu-points > li:first-child {
+      display: none;
+    }
+  
+    #main-menu {
+      border-bottom: 0.5px solid var(--borders-color);
+    }
+  
+    #main-menu > a {
+      display: flex;
+    }
+  
+    #search-bar-mobile {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    #search-bar-mobile-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0.5px solid var(--borders-color);
+      border-radius: 5px;
+      margin: 15px 15px 0 15px;
+    }
+  
+    #search-bar-mobile > div > input {
+      border: none;
+      margin-left: 10px;
+      font-size: large;
+      width: 90%;
+    }
+  
+    #home-logo {
+      width: 80px;
+      padding: 0 15px 0 10px;
+    }
+  
+    #search-bar {
+      display: none;
+    }
+  
+    #filter-icon-main {
+      display: block;
+    }
+  
+    #filter-bar {
+      display: none;
+    }
+
+}
