@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 :root {
     --title-size: 15px;
     --subtitle-size: 14px;
@@ -126,6 +128,74 @@
     margin-right: 5px;
   }
 
+  
+#legal-texts {
+  font-size: var(--subtitle-size);
+  padding-bottom: 40px;
+}
+
+#legal-texts > section > ul {
+  margin: 1rem;
+}
+
+.footer-icon {
+  width: 15px;
+}
+
+.footer-column > ul > li > a {
+  margin-bottom: 10px;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: var(--inside-text-size);
+  border-top: 0.5px solid var(--borders-color);
+  padding: 40px;
+  gap: 5rem;
+}
+
+.footer-column > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  gap: 15px;
+}
+
+.footer-column > ul > li {
+  width: 100%;
+}
+
+.footer-column-title > .menu-icon {
+  display: none;
+}
+
+#adress {
+  border-top: 0.5px solid var(--borders-color);
+  font-size: var(--inside-text-size);
+  text-align: center;
+  padding: 20px 0 20px 0;
+}
+
+#region {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.award-image {
+  width: 50px;
+  padding: 5px;
+}
+
+#qr-code {
+  width: 150px;
+}
+
 
 
 @media screen and (min-width: 768px) and (max-width: 1200px) {
@@ -183,6 +253,37 @@
   
     #main-menu > a {
       display: flex;
+    }
+
+    footer {
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  
+    .footer-column:not(:last-child) > ul > li:not(:first-child) {
+      display: none;
+    }
+  
+    .footer-column:not(:last-child) {
+      border-bottom: 1px solid var(--borders-color);
+      padding-bottom: 10px;
+    }
+  
+    .footer-column-title > .menu-icon {
+      display: block;
+    }
+  
+    .footer-column-title {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    .footer-column-title > a {
+      display: flex;
+      align-items: center;
+      vertical-align: middle;
     }
 }
 
@@ -244,6 +345,37 @@
   
     #filter-bar {
       display: none;
+    }
+
+    footer {
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  
+    .footer-column:not(:last-child) > ul > li:not(:first-child) {
+      display: none;
+    }
+  
+    .footer-column:not(:last-child) {
+      border-bottom: 1px solid var(--borders-color);
+      padding-bottom: 10px;
+    }
+  
+    .footer-column-title > .menu-icon {
+      display: block;
+    }
+  
+    .footer-column-title {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    .footer-column-title > a {
+      display: flex;
+      align-items: center;
+      vertical-align: middle;
     }
 
 }
