@@ -167,6 +167,11 @@ header {
   width: 80%;
   align-self: center;
 }
+
+.product-image:hover {
+  opacity: 0.7;
+}
+
 .product-rating {
   display: flex;
   align-items: center;
