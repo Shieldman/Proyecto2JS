@@ -58,7 +58,7 @@ const products = [
     price: 646.68,
     stars: 5,
     reviews: 19,
-    seller: "Punto by ZE",
+    seller: "OCASIONIA",
     image:
       "https://thumb.pccomponentes.com/w-530-530/articles/1065/10657752/1388-hp-250-g8-intel-core-i5-1135g7-16gb-1tb-ssd-156.jpg",
   },
@@ -91,8 +91,6 @@ const products = [
   },
 ];
 
-var shownProducts = [];
-
 const getProductTemplate = (name, price, stars, reviews, seller, image) => {
   return ` <article class="product">
                 <img class="product-image" src="${image}">
@@ -109,7 +107,6 @@ const getProductTemplate = (name, price, stars, reviews, seller, image) => {
 const setProductList = (products) => {
   const productList = document.querySelector("#products");
   for (let i = 0; i < products.length; i++) {
-    shownProducts.push(products[i]);
     productList.innerHTML += getProductTemplate(
       products[i].name,
       products[i].price,
@@ -127,7 +124,9 @@ const getSelectFilterOption = (seller) => {
 
 const getFiltersBasis = () => {
   const filterList = document.querySelector("#filter");
-  filterList.innerHTML += `<select name="product-filter" id="product-filter"></select>`;
+  filterList.innerHTML += `<select name="product-filter" id="product-filter">
+  <option class="sellerButton" value="all">Todos</option>
+  </select>`;
 
   filterList.innerHTML += `<div id="price-filter">
             <input id="price-filter-input" type="number" placeholder="Precio máximo">
@@ -152,11 +151,50 @@ const applySelectFilterToProducts = (event) => {
   const selectedCategory = event.target.value;
   const productList = document.querySelector("#products");
   productList.innerHTML = "";
-  const oldProductList = shownProducts;
-  shownProducts = [];
+  if (selectedCategory != "all") {
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].seller.toLowerCase() == selectedCategory) {
+        productList.innerHTML += getProductTemplate(
+          products[i].name,
+          products[i].price,
+          products[i].stars,
+          products[i].reviews,
+          products[i].seller,
+          products[i].image
+        );
+      }
+    }
+  } else {
+    setProductList(products);
+  }
+  const priceInput = document.querySelector("#price-filter-input");
+  priceInput.value = "";
+};
+
+const applyCleanFilters = (event) => {
+  const productList = document.querySelector("#products");
+  const priceInput = document.querySelector("#price-filter-input");
+  const productFilter = document.querySelector("#product-filter");
+  productFilter.value = "all";
+  priceInput.value = "";
+  productList.innerHTML = "";
+  setProductList(products);
+};
+
+const applyPriceFilter = (event) => {
+  const priceInput = document.querySelector("#price-filter-input");
+  const productList = document.querySelector("#products");
+  const selectedCategory = document.querySelector("#product-filter");
+  productList.innerHTML = "";
+
+  console.log(selectedCategory);
+
   for (let i = 0; i < products.length; i++) {
-    if (products[i].seller.toLowerCase() == selectedCategory) {
-      shownProducts.push(products[i])
+    if (
+      (products[i].seller.toLowerCase() == selectedCategory.value ||
+        selectedCategory.value == "all") &&
+      products[i].price <= priceInput.value
+    ) {
       productList.innerHTML += getProductTemplate(
         products[i].name,
         products[i].price,
@@ -166,36 +204,6 @@ const applySelectFilterToProducts = (event) => {
         products[i].image
       );
     }
-  }
-};
-
-const applyCleanFilters = (event) => {
-  const productList = document.querySelector("#products");
-  productList.innerHTML = "";
-  setProductList(products);
-  
-};
-
-const applyPriceFilter = (event) => {
-  const priceInput = document.querySelector("#price-filter-input");
-  const productList = document.querySelector("#products");
-  const oldProductList = shownProducts;
-  shownProducts = [];
-  productList.innerHTML = "";
-  for (let i = 0; i < oldProductList.length; i++) {
-      if(oldProductList[i].price<=priceInput.value){
-      productList.innerHTML += getProductTemplate(
-        oldProductList[i].name,
-        oldProductList[i].price,
-        oldProductList[i].stars,
-        oldProductList[i].reviews,
-        oldProductList[i].seller, 
-        oldProductList[i].image
-      );
-
-        shownProducts.push(oldProductList[i]);
-        console.log(shownProducts);
-  };
   }
 };
 
@@ -211,7 +219,7 @@ const createCleanFilterListener = () => {
 
 const createPriceButtonListener = () => {
   const clickButtton = document.querySelector("#price-filter-button");
-  clickButtton.addEventListener("click",applyPriceFilter);
+  clickButtton.addEventListener("click", applyPriceFilter);
 };
 
 setProductList(products);
